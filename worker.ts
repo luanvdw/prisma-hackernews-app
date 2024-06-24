@@ -1,15 +1,14 @@
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
-// const prisma = new PrismaClient().$extends(withAccelerate());
-const prisma = new PrismaClient()
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 async function runQueries(numRequests: number) {
   const timings: number[] = [];
 
   for (let i = 0; i < numRequests; i++) {
     const start = Date.now();
-    await prisma.post.findMany({ take: 20 });
+    await prisma.post.findMany({ take: 20, cacheStrategy: { ttl: 60 } });
     timings.push(Date.now() - start);
   }
 
@@ -23,11 +22,10 @@ async function main() {
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
+  .catch((e) => {
     console.error(e);
-    await prisma.$disconnect();
     process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
   });
