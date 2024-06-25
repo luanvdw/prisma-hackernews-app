@@ -1,8 +1,8 @@
 import { spawn } from 'child_process';
 import { calculateStatistics } from './utils';
 
-const NUM_PROCESSES = 50; // Simulate concurrent serverless functions
-const REQUESTS_PER_PROCESS = 1;
+const NUM_PROCESSES = 10; // Simulate concurrent serverless functions
+const REQUESTS_PER_PROCESS = 1; // The number of request each serverless function will make
 
 async function runBenchmark() {
   console.log('Running benchmark...');
