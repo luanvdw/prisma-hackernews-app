@@ -4,7 +4,8 @@ Hacker News clone demonstrating how to build with Prisma in a real-world applica
 ## Getting started
 1. Clone the repository:
     ```bash
-    git clone git@github.com:luanvdw/prisma-hackernews-app.git
+    git clone git@github.com:luanvdw/prisma-hackernews-app.git &&
+    cd prisma-hackernews-app
     ```
 2. Install dependencies:
     ```bash
