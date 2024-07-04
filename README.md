@@ -26,16 +26,51 @@ Hacker News clone demonstrating how to build with Prisma in a real-world applica
     npx prisma db seed
     ```
 
-## Running a benchmark
-This repository includes a benchmark script that simulates an environment to evaluate database performance with Prisma Accelerate. The script is designed to:
+
+## Benchmarking
+This repository includes two benchmark scripts designed to evaluate different aspects of Prisma Accelerate's performance:
+
+1. Distributed Benchmark: Simulates a distributed environment to evaluate database performance with Accelerate.
+2. Cache Benchmark: Load tests Accelerate's caching functionality.
+
+### Running the Benchmarks
+
+1. Distributed Benchmark
+This benchmark script simulates an environment to evaluate database performance with Prisma Accelerate in a distributed setting. The script is designed to:
+
 - Simulate multiple concurrent serverless function invocations by spawning separate Node.js processes.
 - Measure the performance of database queries under high concurrency.
 - Evaluate the effectiveness of connection pooling in a serverless-like context.
 - Evaluate the effectiveness of Prisma Accelerate in globally distributed applications.
 
+To run the distributed benchmark:
+
 ```bash
-npm run benchmark
+npm run benchmark:distributed
 ```
+
+2. Cache Benchmark
+This benchmark script focuses on load testing Prisma Accelerate's caching functionality. It is designed to:
+
+- Simulate a high number of concurrent requests to test cache performance.
+- Measure response times for cached and non-cached queries.
+- Evaluate the effectiveness of Accelerate's caching strategy.
+- Provide insights into cache hit rates and performance improvements.
+
+To run the cache benchmark:
+```bash
+npm run benchmark:cache
+```
+
+### Interpreting Results
+Both benchmarks will output detailed performance metrics, including:
+
+Average response times
+Median, 95th percentile, and 99th percentile response times
+Cache hit rates (for the cache benchmark)
+Total execution time
+
+These metrics will help you understand the performance characteristics of Prisma Accelerate in different scenarios and optimize your database interactions accordingly.
 
 ## Database structure
 The database schema consists of four main models:
