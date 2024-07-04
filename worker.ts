@@ -1,14 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+const prisma = new PrismaClient();
 
 async function runQueries(numRequests: number) {
   const timings: number[] = [];
 
   for (let i = 0; i < numRequests; i++) {
     const start = Date.now();
-    await prisma.post.findMany({ take: 20, cacheStrategy: { ttl: 60 } });
+    await prisma.post.findMany({ take: 20 });
     timings.push(Date.now() - start);
   }
 

@@ -15,7 +15,8 @@ Hacker News clone demonstrating how to build with Prisma in a real-world applica
     ```bash
     cp .env.example .env
     ```
-    Add your DATABASE_URL in the  `.env` file.
+    Add your DATABASE_URL && DATABASE_URL_DIRECT in the  `.env` file.
+
 4. Set up the database and run migrations:
     ```bash
     npx prisma migrate dev

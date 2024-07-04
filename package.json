@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "benchmark": "ts-node main.ts"
+    "benchmark:distributed": "ts-node distributed.ts",
+    "benchmark:cache": "ts-node cache.ts"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
