@@ -33,9 +33,7 @@ This repository includes two benchmark scripts designed to evaluate different as
 1. Distributed Benchmark: Simulates a distributed environment to evaluate database performance with Accelerate.
 2. Cache Benchmark: Load tests Accelerate's caching functionality.
 
-### Running the Benchmarks
-
-1. Distributed Benchmark
+### 1. Distributed Benchmark
 This benchmark script simulates an environment to evaluate database performance with Prisma Accelerate in a distributed setting. The script is designed to:
 
 - Simulate multiple concurrent serverless function invocations by spawning separate Node.js processes.
@@ -49,7 +47,7 @@ To run the distributed benchmark:
 npm run benchmark:distributed
 ```
 
-2. Cache Benchmark
+### 2. Cache Benchmark
 This benchmark script focuses on load testing Prisma Accelerate's caching functionality. It is designed to:
 
 - Simulate a high number of concurrent requests to test cache performance.
