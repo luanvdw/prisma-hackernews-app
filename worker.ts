@@ -7,7 +7,7 @@ async function runQueries(numRequests: number) {
 
   for (let i = 0; i < numRequests; i++) {
     const start = Date.now();
-    await prisma.post.findMany({ take: 20 });
+    await prisma.post.findMany({ take: 20 }); // Once you've added Accelerate, add your cacheStrategy here
     timings.push(Date.now() - start);
   }
 
