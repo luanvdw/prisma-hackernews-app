@@ -1,6 +1,13 @@
 # Prisma Hacker News App
 Hacker News clone demonstrating how to build with Prisma in a real-world application.
 
+**Note:** This repository is using [Bun](https://bun.sh/) instead of Node.js.
+
+Install Bun (if not already installed):
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
 ## Getting started
 1. Clone the repository:
     ```bash
@@ -9,7 +16,7 @@ Hacker News clone demonstrating how to build with Prisma in a real-world applica
     ```
 2. Install dependencies:
     ```bash
-    npm install
+    bun install
     ```
 3. Set up your environment variables:
     ```bash
@@ -19,11 +26,11 @@ Hacker News clone demonstrating how to build with Prisma in a real-world applica
 
 4. Set up the database and run migrations:
     ```bash
-    npx prisma migrate dev
+    bunx prisma migrate dev
     ```
 5. Seed the database:
     ```bash
-    npx prisma db seed
+    bunx prisma db seed
     ```
 
 
@@ -44,7 +51,7 @@ This benchmark script simulates an environment to evaluate database performance 
 To run the distributed benchmark:
 
 ```bash
-npm run benchmark:distributed
+bun benchmark:distributed
 ```
 
 ### 2. Cache Benchmark
@@ -57,7 +64,7 @@ This benchmark script focuses on load testing Prisma Accelerate's caching functi
 
 To run the cache benchmark:
 ```bash
-npm run benchmark:cache
+bun benchmark:cache
 ```
 
 ### Interpreting Results

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "benchmark:distributed": "ts-node distributed.ts",
-    "benchmark:cache": "ts-node cache.ts"
+    "benchmark:distributed": "bun run distributed.ts",
+    "benchmark:cache": "bun run cache.ts"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
@@ -14,13 +14,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.14.8",
-    "prisma": "^5.15.1",
-    "ts-node": "^10.9.2",
+    "@types/bun": "latest",
+    "prisma": "^5.16.1",
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.15.1",
+    "@prisma/client": "^5.16.1",
     "@prisma/extension-accelerate": "^1.1.0"
   }
 }
