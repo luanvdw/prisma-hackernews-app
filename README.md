@@ -70,6 +70,29 @@ Total execution time
 
 These metrics will help you understand the performance characteristics of Prisma Accelerate in different scenarios and optimize your database interactions accordingly.
 
+## Leveraging Cache Invalidation 🆕
+Accelerate's cache invalidation works by allowing you to tag cached queries and then selectively invalidate those tags when needed.
+
+Here's how it functions:
+1. Tagging: When caching a query, you can add one or more tags to it.
+```ts
+await prisma.post.findMany({
+  cacheStrategy: { ttl: 300, tags: ["posts"] },
+})
+```
+2. Caching: Accelerate stores the query results in its global cache, associated with these tags.
+```ts
+await prisma.$accelerate.invalidate({
+  tags: ["posts"],
+})
+```
+3. Invalidation: When data changes, you can invalidate specific tags using the invalidation API.
+4. Result: All cached queries with the invalidated tags are removed from the cache, ensuring fresh data on the next query.
+
+This system provides a flexible way to maintain cache freshness without having to invalidate the entire cache, balancing performance gains from caching with data accuracy needs.
+
+*Note that Accelerate's cache invalidation is currently experimental and may change in the future.
+
 ## Database structure
 The database schema consists of four main models:
 

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "benchmark:distributed": "ts-node distributed.ts",
-    "benchmark:cache": "ts-node cache.ts"
+    "benchmark:cache": "ts-node cache.ts",
+    "posts:view": "ts-node posts.ts view",
+    "posts:edit": "ts-node posts.ts edit"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
@@ -15,12 +17,12 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.8",
-    "prisma": "^5.15.1",
+    "prisma": "^5.17.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.15.1",
-    "@prisma/extension-accelerate": "^1.1.0"
+    "@prisma/client": "^5.17.0",
+    "@prisma/extension-accelerate": "^0.0.0-experimental-c23e84c"
   }
 }
