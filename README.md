@@ -91,6 +91,17 @@ await prisma.$accelerate.invalidate({
 
 This system provides a flexible way to maintain cache freshness without having to invalidate the entire cache, balancing performance gains from caching with data accuracy needs.
 
+In the repo you can run the following command to similate a page viewing a bunch of posts:
+```bash
+npm run posts:view
+```
+and then run the edit command to invalidate the cached results from that view.
+```bash
+npm run posts:edit
+```
+
+Both of these commands use the `posts.ts` file, check it out to see how it works. Play around with different values.
+
 *Note that Accelerate's cache invalidation is currently experimental and may change in the future.
 
 ## Database structure

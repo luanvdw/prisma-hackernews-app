@@ -3,12 +3,19 @@ import { withAccelerate } from "@prisma/extension-accelerate";
 
 const prisma = new PrismaClient().$extends(withAccelerate());
 
+/**
+ *
+ * Similates a page viewing a bunch of posts that are cached with a TTL of 300 seconds.
+ */
 async function postsView(requestsCount: number) {
   for (let i = 0; i < requestsCount; i++) {
     const startTime = performance.now();
     const { info } = await prisma.post
       .findMany({
-        cacheStrategy: { ttl: 300, tags: ["posts"] },
+        cacheStrategy: {
+          ttl: 300,
+          tags: ["posts"], // <--- This is how you tag a query to be cached
+        },
       })
       .withAccelerateInfo();
     const duration = performance.now() - startTime;
@@ -21,12 +28,16 @@ async function postsView(requestsCount: number) {
   }
 }
 
+/**
+ *
+ * Similates how one would invalidate the cache for a given tag.
+ */
 async function postsEditView() {
   await prisma.$accelerate.invalidate({
-    tags: ["posts"],
-  })
+    tags: ["posts"], // <--- Notice that this tag is the same as the one used in the view function
+  });
 
-  console.log("Invalidated cache for allposts view");
+  console.log("Invalidated cache for all posts view");
 }
 
 async function main() {
