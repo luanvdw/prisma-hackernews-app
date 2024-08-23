@@ -10,7 +10,7 @@ async function runSingleBenchmark() {
 
   const processes = Array(NUM_PROCESSES).fill(null).map(() => {
     return new Promise<number[]>((resolve) => {
-      const worker = spawn('npx', ['ts-node', 'worker.ts', REQUESTS_PER_PROCESS.toString()]);
+      const worker = spawn('npx', ['ts-node', 'worker.ts', REQUESTS_PER_PROCESS.toString()], { shell: process.platform == 'win32' });
       let output = '';
 
       worker.stdout.on('data', (data) => {
